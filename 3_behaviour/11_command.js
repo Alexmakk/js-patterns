@@ -3,7 +3,7 @@ class MyMath {
     this.num = initialValue
   }
 
-  squre() {
+  square() {
     return this.num ** 2
   }
 
@@ -13,14 +13,19 @@ class MyMath {
 }
 
 class Command {
-  constructor(subject) {
-    this.subject = subject
+  constructor(target) {
+    this.target = target
     this.commandsExecuted = []
   }
 
-  executed(Command) {
+  execute(command) {
     this.commandsExecuted.push(command)
-    return this.subject[command]()
+    return this.target[command]()
   }
 }
 
+const x = new Command(new MyMath(2))
+
+console.log(x.execute('square'));
+console.log(x.execute('cube'));
+console.log(x.commandsExecuted)
